@@ -243,7 +243,7 @@ export default class Pdf extends Component {
 
   _downloadFile = async (source, cacheFile) => {
     if (this.lastRNBFTask?.cancel) {
-      this.lastRNBFTask.cancel((err) => {});
+      this.lastRNBFTask?.cancel((err) => {});
       this.lastRNBFTask = null;
     }
 
@@ -414,12 +414,7 @@ export default class Pdf extends Component {
       return (
         <View style={[this.props.style, { overflow: "hidden" }]}>
           {!this.state.isDownloaded ? (
-            <View
-              style={[
-                styles.progressContainer,
-                this.props.progressContainerStyle,
-              ]}
-            >
+            <View style={styles.progressContainer}>
               {this.props.renderActivityIndicator ? (
                 this.props.renderActivityIndicator(this.state.progress)
               ) : (
